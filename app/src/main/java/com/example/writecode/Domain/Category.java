@@ -1,26 +1,27 @@
 package com.example.writecode.Domain;
 
 public class Category {
-    private int id;
-    private String imagemPath;
+    private int Id;
+    private String ImagePath;
+    private String Name;
 
     public Category() {
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
-    public String getImagemPath() {
-        return imagemPath;
+    public String getImagePath() {
+        return ImagePath;
     }
 
-    public void setImagemPath(String imagemPath) {
-        this.imagemPath = imagemPath;
+    public void setImagePath(String imagePath) {
+        ImagePath = imagePath;
     }
 
     public String getName() {
@@ -30,6 +31,4 @@ public class Category {
     public void setName(String name) {
         Name = name;
     }
-
-    private String Name;
 }

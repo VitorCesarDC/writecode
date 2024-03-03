@@ -20,60 +20,55 @@ import com.example.writecode.R;
 
 import java.util.ArrayList;
 
-public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.viewholder> {
+public class FoodListAdapter  extends RecyclerView.Adapter<FoodListAdapter.viewholder> {
     ArrayList<Foods> items;
     Context context;
 
-    public BestFoodsAdapter(ArrayList<Foods> items) {
+    public FoodListAdapter(ArrayList<Foods> items) {
         this.items = items;
     }
 
     @NonNull
     @Override
-    public BestFoodsAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        View inflate= LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_best_deal,parent,false);
+    public FoodListAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context=parent.getContext();
+        View inflate= LayoutInflater.from(context).inflate(R.layout.viewholder_list_food,parent,false);
         return new viewholder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BestFoodsAdapter.viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull FoodListAdapter.viewholder holder, int position) {
         holder.titleTxt.setText(items.get(position).getTitle());
-        holder.priceTxt.setText("R$"+items.get(position).getPrice());
         holder.timeTxt.setText(items.get(position).getTimeValue()+" min");
-        holder.startTxt.setText(""+items.get(position).getStar());
-
+        holder.priceTxt.setText("R$" + items.get(position).getPrice());
+        holder.rateTxt.setText(""+items.get(position).getStar());
         Glide.with(context)
                 .load(items.get(position).getImagePath())
-                .transform(new CenterCrop(),new RoundedCorners(30))
+                .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
-
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent=new Intent(context, DetailActivity.class);
             intent.putExtra("object",items.get(position));
             context.startActivity(intent);
         });
-
-
-
-
     }
 
     @Override
     public int getItemCount() {
         return items.size();
     }
-    public class viewholder extends RecyclerView.ViewHolder{
-        TextView titleTxt,priceTxt,startTxt,timeTxt;
+
+    public class viewholder extends RecyclerView.ViewHolder {
+        TextView titleTxt,priceTxt,rateTxt,timeTxt;
         ImageView pic;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             titleTxt=itemView.findViewById(R.id.titleTxt);
-            priceTxt=itemView.findViewById(R.id.pricetx);
-            startTxt=itemView.findViewById(R.id.starTxt);
+            priceTxt=itemView.findViewById(R.id.priceTxt);
+            rateTxt=itemView.findViewById(R.id.rateTxt);
             timeTxt=itemView.findViewById(R.id.timeTxt);
-            pic=itemView.findViewById(R.id.pic);
+            pic=itemView.findViewById(R.id.img);
         }
     }
 }

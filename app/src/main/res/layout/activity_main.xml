@@ -66,7 +66,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editTextText"
+                        android:id="@+id/searchEdt"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
@@ -91,7 +91,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView16"
+                    android:id="@+id/cartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginStart="6dp"
@@ -119,18 +119,12 @@
                     android:textSize="22dp"
                     android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/red"
-                    android:text="ver todos" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
-
+                android:layout_height="300dp"
+                android:layout_marginBottom="8dp">
                 <ProgressBar
                     android:id="@+id/progressBarDayFood"
                     style="?android:attr/progressBarStyle"
@@ -157,6 +151,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:text="Selecione a Categoria"
                 android:textColor="@color/dark_blue"

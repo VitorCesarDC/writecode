@@ -1,7 +1,9 @@
 package com.example.writecode.Domain;
 
-public class Foods {
-    private int categoryId;
+import java.io.Serializable;
+
+public class Foods implements Serializable {
+    private int CategoryId;
     private String Description;
     private boolean BestFood;
     private int Id;
@@ -20,15 +22,15 @@ public class Foods {
 
     @Override
     public String toString() {
-        return  Title;
+        return Title;
     }
 
     public int getCategoryId() {
-        return categoryId;
+        return CategoryId;
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        CategoryId = categoryId;
     }
 
     public String getDescription() {

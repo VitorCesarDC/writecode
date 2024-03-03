@@ -1,6 +1,7 @@
 package com.example.writecode.Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.writecode.Adapater.BestFoodsAdapter;
 import com.example.writecode.Adapater.CategoryAdapter;
 import com.example.writecode.Domain.Category;
@@ -35,12 +35,25 @@ public class MainActivity  extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
-
         initBestFood();
         initCategory();
+        setVariable();
+
     }
+    private void setVariable(){
+        binding.seachButton.setOnClickListener(v -> {
+            String text = binding.searchEdt.getText().toString();
+            if(!text.isEmpty()){
+                Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
+                intent.putExtra("text", text);
+                intent.putExtra("isSearch",true);
+                startActivity(intent);
+            }
+        });
+        binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
+    }
+
+
 
     private void initBestFood() {
         DatabaseReference myRef=database.getReference("Foods");
